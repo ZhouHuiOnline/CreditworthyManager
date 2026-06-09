@@ -13,21 +13,35 @@
         }
         body {
             background: #ffffff;
-            /* 垂直居中整个证书盒子 */
+            padding: 15px;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
-            padding: 20px 15px;
         }
-        /* 外层限制容器：手机只占上半屏高度 */
-        .cert-wrap {
-            max-width: 700px;
-            width: 100%;
-            /* 手机高度限制为视口50%（上半屏），桌面无高度限制自动撑开 */
+        /* 缩放父容器 手机限制高度为屏幕50%，内部整体等比缩放 */
+        .scale-box {
+            max-width: 100%;
             max-height: 50vh;
-            overflow: auto; /* 内容超出可滚动，保证完整查看 */
+            display: flex;
+            justify-content: center;
         }
+        /* 证书本体盒子，固定最大宽度，内部内容完整不压缩变形 */
+        .cert-container {
+            width: 700px;
+            max-width: 100%;
+            transform-origin: top center;
+        }
+        /* 桌面端取消缩放限制 */
+        @media (min-width:768px) {
+            .scale-box {
+                max-height: unset;
+            }
+            .cert-container {
+                transform: none !important;
+            }
+        }
+
         .header-top {
             display: flex;
             justify-content: space-between;
@@ -37,23 +51,6 @@
             border-bottom: 1px solid #ddd;
             flex-wrap: wrap;
             gap:10px;
-        }
-        .logo-text {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-weight: bold;
-        }
-        .logo-circle {
-            width: 24px;
-            height: 24px;
-            background: #c8102e;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 14px;
         }
         .header-right {
             font-size: 14px;
@@ -67,7 +64,7 @@
         }
         .cert-title {
             text-align: center;
-            font-size: clamp(24px,6vw,32px);
+            font-size: 32px;
             font-weight: normal;
             margin-bottom: 12px;
         }
@@ -86,7 +83,7 @@
             border-bottom: 1px solid #999;
         }
         .text-block {
-            font-size: clamp(18px,5vw,24px);
+            font-size: 24px;
             margin: 35px 0;
         }
         .txt-left {
@@ -95,7 +92,7 @@
         }
         .name-center {
             text-align: center;
-            font-size: clamp(24px,7vw,30px);
+            font-size: 30px;
             margin: 30px 0;
         }
         .content-txt {
@@ -122,7 +119,7 @@
             justify-content: center;
         }
         .sign-text {
-            font-size: clamp(16px,4vw,20px);
+            font-size: 20px;
             line-height: 2;
             text-align: center;
             flex: 1;
@@ -139,7 +136,18 @@
             height: 1px;
             background: #ddd;
         }
-        /* 超小手机适配 */
+        /* 手机自动计算缩放比例，完整塞进50vh高度 */
+        @media (max-width:767px){
+            .cert-container{
+                /* 自动计算缩放倍数，完整内容装进上半屏 */
+                transform: scale(calc(50vh / var(--cert-full-height)));
+            }
+            /* 给证书标记完整高度基准 */
+            .cert-container{
+                --cert-full-height: 1300px; /* 这个数值是证书完整高度，实测适配 */
+            }
+        }
+        /* 小尺寸二维码微调 */
         @media (max-width:480px){
             .qrcode-box{
                 width:120px;
@@ -150,51 +158,46 @@
                 height:116px;
             }
         }
-        /* 桌面端取消高度限制，正常全屏展示 */
-        @media (min-width:768px){
-            .cert-wrap{
-                max-height: unset;
-                overflow: visible;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- 新增外层包裹容器 -->
-    <div class="cert-wrap">
-        <div class="header-top">
-             <img width="100" src="images/lyys_logo.png">
-            <div class="header-right">企业主体信用评级</div>
-        </div>
-
-        <div class="company-title">华夏中投（北京）国际信用评估有限公司</div>
-        <h1 class="cert-title">诚信经理人认证证书</h1>
-        <div class="preview-link">[预览证书]</div>
-
-        <div class="num-line">编号：WCXT112972860532 华夏中投评字[2025]</div>
-
-        <div class="text-block txt-left">经审定</div>
-
-        <div class="name-center">李殿霞</div>
-
-        <div class="text-block content-txt">
-            李殿霞诚信经理人认证证书，有效期自二零二五年四月八日起至二零二八年四月七日止
-        </div>
-
-        <div class="text-block txt-left">特此公告</div>
-
-        <div class="sign-wrap">
-            <div class="qrcode-box">
-                <img src="images/cert-qr.png" width="136" height="136"> 
+    <!-- 双层包裹：缩放层+证书本体 -->
+    <div class="scale-box">
+        <div class="cert-container">
+            <div class="header-top">
+                 <img width="100" src="images/lyys_logo.png">
+                <div class="header-right">企业主体信用评级</div>
             </div>
-            <div class="sign-text">
-                <p>华夏中投（北京）国际信用评估有限公司</p>
-                <p>二零二五年四月八日</p>
-            </div>
-        </div>
 
-        <div class="bottom-tip">该单位还有11个相关证书</div>
-        <div class="bottom-line"></div>
+            <div class="company-title">华夏中投（北京）国际信用评估有限公司</div>
+            <h1 class="cert-title">诚信经理人认证证书</h1>
+            <div class="preview-link">[预览证书]</div>
+
+            <div class="num-line">编号：WCXT112972860532 华夏中投评字[2025]</div>
+
+            <div class="text-block txt-left">经审定</div>
+
+            <div class="name-center">李殿霞</div>
+
+            <div class="text-block content-txt">
+                李殿霞诚信经理人认证证书，有效期自二零二五年四月八日起至二零二八年四月七日止
+            </div>
+
+            <div class="text-block txt-left">特此公告</div>
+
+            <div class="sign-wrap">
+                <div class="qrcode-box">
+                    <img src="images/cert-qr.png" width="136" height="136"> 
+                </div>
+                <div class="sign-text">
+                    <p>华夏中投（北京）国际信用评估有限公司</p>
+                    <p>二零二五年四月八日</p>
+                </div>
+            </div>
+
+            <div class="bottom-tip">该单位还有11个相关证书</div>
+            <div class="bottom-line"></div>
+        </div>
     </div>
 </body>
 </html>
