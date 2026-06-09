@@ -2,7 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 严格移动端缩放禁止放大缩小，适配屏幕 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>诚信经理人认证证书详情</title>
     <style>
         * {
@@ -13,7 +14,7 @@
         }
         body {
             background: #ffffff;
-            padding: 40px 30px;
+            padding: 20px 15px; /* 手机缩小内边距 */
             max-width: 700px;
             margin: 0 auto;
         }
@@ -24,6 +25,8 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 1px solid #ddd;
+            flex-wrap: wrap; /* 空间不足自动换行 */
+            gap:10px;
         }
         .logo-text {
             display: flex;
@@ -59,7 +62,7 @@
         }
         .cert-title {
             text-align: center;
-            font-size: 32px;
+            font-size: clamp(24px,6vw,32px); /* 自适应字体大小 */
             font-weight: normal;
             margin-bottom: 12px;
         }
@@ -70,7 +73,7 @@
             margin-bottom: 20px;
         }
         .num-line {
-            width: 70%;
+            width: 90%; /* 手机加宽占比，不用70%挤得窄 */
             margin: 0 auto 30px;
             text-align: center;
             font-size: 15px;
@@ -78,29 +81,33 @@
             border-bottom: 1px solid #999;
         }
         .text-block {
-            font-size: 24px;
-            margin: 35px 130PX;
+            font-size: clamp(18px,5vw,24px);
+            margin: 35px 0; /* 删掉原来固定130px左右边距，改用内部宽度控制 */
         }
         .txt-left {
             margin-bottom: 25px;
+            padding-left: 5%;
         }
         .name-center {
             text-align: center;
-            font-size: 30px;
+            font-size: clamp(24px,7vw,30px);
             margin: 30px 0;
         }
         .content-txt {
             text-indent: 2em;
-            width: 80%;
+            width: 90%;
             margin: 0 auto 30px;
             line-height: 1.6;
         }
+        /* 签名+二维码 移动端自适应布局 */
         .sign-wrap {
             display: flex;
-            align-items: flex-end;
-            gap: 50px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap; /* 手机自动上下换行 */
+            gap: 30px;
             margin-top: 50px;
-            padding-left: 80px;
+            padding-left: 0; /* 清除左侧大固定padding */
         }
         .qrcode-box {
             width: 140px;
@@ -111,10 +118,11 @@
             justify-content: center;
         }
         .sign-text {
-            font-size: 20px;
+            font-size: clamp(16px,4vw,20px);
             line-height: 2;
             text-align: center;
             flex: 1;
+            min-width:220px;
         }
         .bottom-tip {
             text-align: center;
@@ -127,15 +135,22 @@
             height: 1px;
             background: #ddd;
         }
+        /* 小屏幕手机额外微调 */
+        @media (max-width:480px){
+            .qrcode-box{
+                width:120px;
+                height:120px;
+            }
+            img[src*="cert-qr.png"]{
+                width:116px;
+                height:116px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="header-top">
-        
-
          <img width="100" src="images/lyys_logo.png">
-    
-       
         <div class="header-right">企业主体信用评级</div>
     </div>
 
@@ -157,7 +172,7 @@
 
     <div class="sign-wrap">
         <div class="qrcode-box">
-            <!-- 这里可以替换成真实二维码图片--> <img src="images/cert-qr.png" width="136" height="136"> 
+            <img src="images/cert-qr.png" width="136" height="136"> 
         </div>
         <div class="sign-text">
             <p>华夏中投（北京）国际信用评估有限公司</p>
