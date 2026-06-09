@@ -12,32 +12,31 @@
             font-family: "Microsoft YaHei", SimSun, sans-serif;
         }
         body {
-            background: #ffffff;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
+            background: #fff;
             min-height: 100vh;
         }
-        /* 外层限制高度为屏幕上半区 */
-        .wrap-outer {
+        /* 手机外层容器：锁定上半屏高度 */
+        .page-box {
             width: 100%;
             max-height: 50vh;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
         }
-        /* 证书主体盒子 */
-        .cert-main {
-            width: 700px;
-            max-width: 100%;
-            padding: 15px;
+        /* 证书主体，手机满屏宽，电脑限制700px居中 */
+        .cert {
+            width: 100%;
+            padding: 10px;
         }
-        /* 电脑平板：恢复原始宽度高度 */
-        @media (min-width:768px) {
-            .wrap-outer {
+        @media (min-width: 768px) {
+            .page-box {
                 max-height: unset;
                 overflow: visible;
+                padding: 40px 30px;
+                display: flex;
+                justify-content: center;
+            }
+            .cert {
+                width: 700px;
+                padding: 0;
             }
         }
 
@@ -45,103 +44,126 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 1px solid #ddd;
             flex-wrap: wrap;
-            gap:10px;
+            gap: 8px;
         }
         .header-right {
-            font-size: 14px;
+            font-size: 12px;
             color: #333;
         }
         .company-title {
             text-align: center;
-            font-size: 20px;
+            font-size: 16px;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
         .cert-title {
             text-align: center;
-            font-size: clamp(24px,6vw,32px);
+            font-size: 24px;
             font-weight: normal;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
         .preview-link {
             text-align: center;
             color: #4080dd;
-            font-size: 18px;
-            margin-bottom: 20px;
+            font-size: 14px;
+            margin-bottom: 12px;
         }
         .num-line {
-            width: 90%;
-            margin: 0 auto 30px;
+            width: 95%;
+            margin: 0 auto 20px;
             text-align: center;
-            font-size: 15px;
-            padding-bottom: 8px;
+            font-size: 12px;
+            padding-bottom: 6px;
             border-bottom: 1px solid #999;
         }
         .text-block {
-            font-size: clamp(18px,5vw,24px);
-            margin: 35px 0;
+            font-size: 18px;
+            margin: 20px 0;
         }
         .txt-left {
-            margin-bottom: 25px;
-            padding-left: 5%;
+            margin-bottom: 15px;
+            padding-left: 3%;
         }
         .name-center {
             text-align: center;
-            font-size: clamp(24px,7vw,30px);
-            margin: 30px 0;
+            font-size: 24px;
+            margin: 20px 0;
         }
         .content-txt {
             text-indent: 2em;
-            width: 90%;
-            margin: 0 auto 30px;
-            line-height: 1.6;
+            width: 95%;
+            margin: 0 auto 20px;
+            line-height: 1.4;
         }
         .sign-wrap {
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 50px;
+            gap: 20px;
+            margin-top: 30px;
             padding-left: 0;
         }
         .qrcode-box {
-            width: clamp(120px,20vw,140px);
-            height: clamp(120px,20vw,140px);
+            width: 100px;
+            height: 100px;
             border: 1px solid #333;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+        .qrcode-box img {
+            width: 96px;
+            height: 96px;
+        }
         .sign-text {
-            font-size: clamp(16px,4vw,20px);
-            line-height: 2;
+            font-size: 16px;
+            line-height: 1.6;
             text-align: center;
-            flex: 1;
-            min-width:220px;
+            min-width: 180px;
         }
         .bottom-tip {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 25px;
             color: #4080dd;
-            font-size: 16px;
+            font-size: 13px;
         }
         .bottom-line {
-            margin-top: 20px;
+            margin-top: 12px;
             height: 1px;
             background: #ddd;
+        }
+
+        /* 电脑端恢复原始尺寸间距 */
+        @media (min-width: 768px) {
+            .header-top {margin-bottom:20px;padding-bottom:10px;gap:10px;}
+            .header-right {font-size:14px;}
+            .company-title {font-size:20px;margin-bottom:20px;}
+            .cert-title {font-size:32px;margin-bottom:12px;}
+            .preview-link {font-size:18px;margin-bottom:20px;}
+            .num-line {width:70%;font-size:15px;margin-bottom:30px;padding-bottom:8px;}
+            .text-block {font-size:24px;margin:35px 0;}
+            .txt-left {margin-bottom:25px;padding-left:5%;}
+            .name-center {font-size:30px;margin:30px 0;}
+            .content-txt {width:80%;line-height:1.6;margin-bottom:30px;}
+            .sign-wrap {gap:50px;margin-top:50px;}
+            .qrcode-box {width:140px;height:140px;}
+            .qrcode-box img {width:136px;height:136px;}
+            .sign-text {font-size:20px;line-height:2;min-width:220px;}
+            .bottom-tip {font-size:16px;margin-top:40px;}
+            .bottom-line {margin-top:20px;}
         }
     </style>
 </head>
 <body>
-    <div class="wrap-outer">
-        <div class="cert-main">
+    <div class="page-box">
+        <div class="cert">
             <div class="header-top">
-                 <img width="100" src="images/lyys_logo.png">
+                <img width="80" src="images/lyys_logo.png">
                 <div class="header-right">企业主体信用评级</div>
             </div>
 
@@ -163,7 +185,7 @@
 
             <div class="sign-wrap">
                 <div class="qrcode-box">
-                    <img src="images/cert-qr.png" width="100%" height="100%"> 
+                    <img src="images/cert-qr.png">
                 </div>
                 <div class="sign-text">
                     <p>华夏中投（北京）国际信用评估有限公司</p>
