@@ -13,32 +13,31 @@
         }
         body {
             background: #ffffff;
-            padding: 15px;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
         }
-        /* 缩放父容器 手机限制高度为屏幕50%，内部整体等比缩放 */
-        .scale-box {
-            max-width: 100%;
+        /* 外层限制高度为屏幕上半区 */
+        .wrap-outer {
+            width: 100%;
             max-height: 50vh;
+            overflow: hidden;
             display: flex;
             justify-content: center;
         }
-        /* 证书本体盒子，固定最大宽度，内部内容完整不压缩变形 */
-        .cert-container {
+        /* 证书主体盒子 */
+        .cert-main {
             width: 700px;
             max-width: 100%;
-            transform-origin: top center;
+            padding: 15px;
         }
-        /* 桌面端取消缩放限制 */
+        /* 电脑平板：恢复原始宽度高度 */
         @media (min-width:768px) {
-            .scale-box {
+            .wrap-outer {
                 max-height: unset;
-            }
-            .cert-container {
-                transform: none !important;
+                overflow: visible;
             }
         }
 
@@ -64,7 +63,7 @@
         }
         .cert-title {
             text-align: center;
-            font-size: 32px;
+            font-size: clamp(24px,6vw,32px);
             font-weight: normal;
             margin-bottom: 12px;
         }
@@ -83,7 +82,7 @@
             border-bottom: 1px solid #999;
         }
         .text-block {
-            font-size: 24px;
+            font-size: clamp(18px,5vw,24px);
             margin: 35px 0;
         }
         .txt-left {
@@ -92,7 +91,7 @@
         }
         .name-center {
             text-align: center;
-            font-size: 30px;
+            font-size: clamp(24px,7vw,30px);
             margin: 30px 0;
         }
         .content-txt {
@@ -111,15 +110,15 @@
             padding-left: 0;
         }
         .qrcode-box {
-            width: 140px;
-            height: 140px;
+            width: clamp(120px,20vw,140px);
+            height: clamp(120px,20vw,140px);
             border: 1px solid #333;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .sign-text {
-            font-size: 20px;
+            font-size: clamp(16px,4vw,20px);
             line-height: 2;
             text-align: center;
             flex: 1;
@@ -136,34 +135,11 @@
             height: 1px;
             background: #ddd;
         }
-        /* 手机自动计算缩放比例，完整塞进50vh高度 */
-        @media (max-width:767px){
-            .cert-container{
-                /* 自动计算缩放倍数，完整内容装进上半屏 */
-                transform: scale(calc(50vh / var(--cert-full-height)));
-            }
-            /* 给证书标记完整高度基准 */
-            .cert-container{
-                --cert-full-height: 1300px; /* 这个数值是证书完整高度，实测适配 */
-            }
-        }
-        /* 小尺寸二维码微调 */
-        @media (max-width:480px){
-            .qrcode-box{
-                width:120px;
-                height:120px;
-            }
-            img[src*="cert-qr.png"]{
-                width:116px;
-                height:116px;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- 双层包裹：缩放层+证书本体 -->
-    <div class="scale-box">
-        <div class="cert-container">
+    <div class="wrap-outer">
+        <div class="cert-main">
             <div class="header-top">
                  <img width="100" src="images/lyys_logo.png">
                 <div class="header-right">企业主体信用评级</div>
@@ -187,7 +163,7 @@
 
             <div class="sign-wrap">
                 <div class="qrcode-box">
-                    <img src="images/cert-qr.png" width="136" height="136"> 
+                    <img src="images/cert-qr.png" width="100%" height="100%"> 
                 </div>
                 <div class="sign-text">
                     <p>华夏中投（北京）国际信用评估有限公司</p>
