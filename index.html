@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>诚信经理人认证证书</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+        }
+        body {
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .certificate-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-circle {
+            width: 24px;
+            height: 24px;
+            background-color: #d92121;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .logo-text {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+        .tag {
+            font-size: 14px;
+            color: #666;
+        }
+        .issuer-info {
+            text-align: center;
+            color: #aaa;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .cert-title {
+            text-align: center;
+            font-size: 22px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        .preview-link {
+            text-align: center;
+            color: #2385bb;
+            font-size: 16px;
+            text-decoration: underline;
+            margin-bottom: 30px;
+        }
+        .cert-number {
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .cert-content {
+            text-align: center;
+            line-height: 2.5;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .qrcode-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+        .qrcode {
+            width: 120px;
+            height: 120px;
+            background-color: #000;
+        }
+        .issuer-details {
+            text-align: center;
+            line-height: 2;
+            font-size: 18px;
+            color: #333;
+        }
+        .other-certs {
+            text-align: center;
+            color: #2385bb;
+            font-size: 14px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="certificate-container">
+        <!-- 头部 -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-circle">华</div>
+                <div class="logo-text">华夏中投</div>
+            </div>
+            <div class="tag">企业主体信用评级</div>
+        </div>
+
+        <!-- 颁发机构 -->
+        <div class="issuer-info">
+            华夏中投（北京）国际信用评估有限公司
+        </div>
+
+        <!-- 证书标题 -->
+        <div class="cert-title">
+            诚信经理人认证证书
+        </div>
+
+        <!-- 预览链接 -->
+        <div class="preview-link">
+            [预览证书]
+        </div>
+
+        <!-- 证书编号 -->
+        <div class="cert-number">
+            编号：WCXT112972860532 华夏中投评字[2025]
+        </div>
+
+        <!-- 证书正文 -->
+        <div class="cert-content">
+            经审定<br><br>
+            <span style="font-size:20px; font-weight:bold;">李殿霞</span><br><br>
+            李殿霞诚信经理人认证证书，有效期自二零二五年四月八日起至二零二八年四月七日止<br><br>
+            特此公告
+        </div>
+
+        <!-- 二维码与颁发信息 -->
+        <div class="qrcode-section">
+            <div class="qrcode">
+                <!-- 你可以替换这里的SVG为真实二维码图片 -->
+                <svg width="120" height="120" viewBox="0 0 120 120">
+                    <rect width="120" height="120" fill="#000"/>
+                    <rect x="10" y="10" width="30" height="30" fill="#fff"/>
+                    <rect x="80" y="10" width="30" height="30" fill="#fff"/>
+                    <rect x="10" y="80" width="30" height="30" fill="#fff"/>
+                </svg>
+            </div>
+            <div class="issuer-details">
+                华夏中投（北京）国际信用评估有限公司<br>
+                二零二五年四月八日
+            </div>
+        </div>
+
+        <!-- 其他证书链接 -->
+        <div class="other-certs">
+            该单位还有11个相关证书
+        </div>
+    </div>
+</body>
+</html>
