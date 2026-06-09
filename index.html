@@ -2,40 +2,95 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>诚信经理人认证证书</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            font-family: "PingFang SC", "Microsoft YaHei", "SimHei", sans-serif;
         }
+
         body {
             background-color: #f0f0f0;
-            padding: 20px;
+            min-height: 100vh;
         }
-        .certificate-container {
-            max-width: 800px;
-            margin: 0 auto;
+
+        /* 顶部状态栏（和手机截图一致） */
+        .status-bar {
+            background-color: #e9e9e9;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .status-bar .left {
+            font-weight: 500;
+        }
+
+        .status-bar .right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        /* 页面导航栏 */
+        .nav-bar {
+            background-color: #e9e9e9;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .nav-bar .left {
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .nav-bar .right {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .nav-bar .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        /* 证书主体 */
+        .certificate-page {
             background-color: #ffffff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px 16px;
+            max-width: 100%;
+            margin: 0 auto;
         }
-        .header {
+
+        /* 头部logo和标题 */
+        .cert-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ddd;
         }
-        .logo {
+
+        .logo-section {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
+
         .logo-circle {
             width: 24px;
             height: 24px;
@@ -48,40 +103,54 @@
             font-weight: bold;
             font-size: 14px;
         }
+
         .logo-text {
             font-size: 16px;
             color: #333;
             font-weight: 500;
         }
+
         .tag {
-            font-size: 14px;
+            font-size: 12px;
             color: #666;
         }
+
+        /* 颁发机构名称 */
         .issuer-info {
             text-align: center;
             color: #aaa;
             font-size: 18px;
             margin-bottom: 30px;
         }
+
+        /* 证书标题 */
         .cert-title {
             text-align: center;
             font-size: 22px;
             color: #aaa;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
+
+        /* 预览链接 */
         .preview-link {
             text-align: center;
             color: #2385bb;
             font-size: 16px;
             text-decoration: underline;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
+
+        /* 证书编号 */
         .cert-number {
             text-align: center;
             font-size: 14px;
             color: #333;
             margin-bottom: 40px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ddd;
         }
+
+        /* 证书正文 */
         .cert-content {
             text-align: center;
             line-height: 2.5;
@@ -89,6 +158,15 @@
             color: #333;
             margin-bottom: 30px;
         }
+
+        .cert-content .name {
+            font-size: 20px;
+            font-weight: bold;
+            display: block;
+            margin: 10px 0;
+        }
+
+        /* 二维码与颁发信息 */
         .qrcode-section {
             display: flex;
             align-items: center;
@@ -96,17 +174,21 @@
             gap: 60px;
             margin-bottom: 40px;
         }
+
         .qrcode {
             width: 120px;
             height: 120px;
             background-color: #000;
         }
+
         .issuer-details {
             text-align: center;
             line-height: 2;
             font-size: 18px;
             color: #333;
         }
+
+        /* 其他证书链接 */
         .other-certs {
             text-align: center;
             color: #2385bb;
@@ -118,10 +200,32 @@
     </style>
 </head>
 <body>
-    <div class="certificate-container">
-        <!-- 头部 -->
-        <div class="header">
-            <div class="logo">
+    <!-- 顶部状态栏 -->
+    <div class="status-bar">
+        <div class="left">11:26</div>
+        <div class="right">
+            <span>43.4 K/s</span>
+            <span>4G</span>
+            <span>5G</span>
+            <span>84</span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="left">×</div>
+        <div class="title">
+            <div>华夏中投（北京）国际信用评估有限...</div>
+            <div class="subtitle">hxzt.cn</div>
+        </div>
+        <div class="right">…</div>
+    </div>
+
+    <!-- 证书主体 -->
+    <div class="certificate-page">
+        <!-- 头部logo和标签 -->
+        <div class="cert-header">
+            <div class="logo-section">
                 <div class="logo-circle">华</div>
                 <div class="logo-text">华夏中投</div>
             </div>
@@ -150,16 +254,16 @@
 
         <!-- 证书正文 -->
         <div class="cert-content">
-            经审定<br><br>
-            <span style="font-size:20px; font-weight:bold;">李殿霞</span><br><br>
-            李殿霞诚信经理人认证证书，有效期自二零二五年四月八日起至二零二八年四月七日止<br><br>
+            经审定<br>
+            <span class="name">李殿霞</span>
+            李殿霞诚信经理人认证证书，有效期自二零二五年四月八日起至二零二八年四月七日止<br>
             特此公告
         </div>
 
         <!-- 二维码与颁发信息 -->
         <div class="qrcode-section">
             <div class="qrcode">
-                <!-- 你可以替换这里的SVG为真实二维码图片 -->
+                <!-- 这里可以替换为真实二维码图片 -->
                 <svg width="120" height="120" viewBox="0 0 120 120">
                     <rect width="120" height="120" fill="#000"/>
                     <rect x="10" y="10" width="30" height="30" fill="#fff"/>
