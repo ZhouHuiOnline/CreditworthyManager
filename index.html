@@ -3,180 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华夏中投（北京）国际信用评估有限公司</title>
+    <title>诚信经理人认证证书</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            font-family: "Microsoft YaHei", SimSun, sans-serif;
         }
         body {
-            background-color: #f0f0f0;
-            padding: 20px;
+            background-color: #ffffff;
+            padding: 40px 20px;
         }
-        .certificate-container {
+        .wrap {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .header {
+        /* 顶部logo行 */
+        .top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #dddddd;
             margin-bottom: 30px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
         }
-        .logo {
+        .logo-text {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            font-size: 16px;
+            color: #222;
         }
         .logo-circle {
             width: 24px;
             height: 24px;
             background-color: #d92121;
             border-radius: 50%;
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-weight: bold;
-            font-size: 14px;
         }
-        .logo-text {
-            font-size: 16px;
+        .top-tag {
+            font-size: 12px;
             color: #333;
-            font-weight: 500;
         }
-        .tag {
-            font-size: 14px;
-            color: #666;
-        }
-        .issuer-info {
+        /* 颁发机构名称 */
+        .org-top-name {
             text-align: center;
-            color: #aaa;
-            font-size: 18px;
-            margin-bottom: 30px;
+            font-size: 17px;
+            color: #333;
+            margin-bottom: 22px;
         }
+        /* 证书大标题 */
         .cert-title {
             text-align: center;
-            font-size: 22px;
-            color: #aaa;
-            margin-bottom: 20px;
+            font-size: 26px;
+            color: #222;
+            margin-bottom: 8px;
         }
-        .preview-link {
+        /* 预览蓝色小字 */
+        .preview {
             text-align: center;
-            color: #2385bb;
             font-size: 16px;
+            color: #2385bb;
             text-decoration: underline;
-            margin-bottom: 30px;
+            margin-bottom: 16px;
         }
-        .cert-number {
+        /* 编号分割线 */
+        .no-line {
+            width: 80%;
+            margin: 0 auto 35px;
+            border-bottom: 1px solid #ddd;
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
             color: #333;
-            margin-bottom: 40px;
+            padding-bottom: 5px;
         }
-        .cert-content {
+        /* 正文区域 */
+        .content {
             text-align: center;
-            line-height: 2.5;
-            font-size: 18px;
-            color: #333;
-            margin-bottom: 30px;
+            font-size: 20px;
+            line-height: 2.1;
+            color: #111;
         }
-        .qrcode-section {
+        .name {
+            font-size: 23px;
+            margin: 10px 0;
+        }
+        /* 底部二维码+落款 */
+        .bottom-area {
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
-            gap: 60px;
-            margin-bottom: 40px;
+            gap: 70px;
+            margin: 30px 0;
         }
-        .qrcode {
+        /* 二维码空白占位框，不填充图片 */
+        .qr-code {
             width: 120px;
             height: 120px;
-            background-color: #000;
+            border:1px solid #999;
         }
-        .issuer-details {
+        .sign-info {
             text-align: center;
+            font-size: 19px;
             line-height: 2;
-            font-size: 18px;
-            color: #333;
         }
-        .other-certs {
+        /* 底部提示文字 */
+        .bottom-tip {
+            width: 80%;
+            margin: 0 auto;
+            border-top: 1px solid #ddd;
             text-align: center;
+            padding-top: 8px;
+            font-size: 13px;
             color: #2385bb;
-            font-size: 14px;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
         }
     </style>
 </head>
 <body>
-
-        <!-- 头部 -->
-        <div class="header">
-            <div class="logo">
-                <div class="logo-circle">华</div>
-                <div class="logo-text">华夏中投</div>
+    <div class="wrap">
+        <!-- 顶部logo与标签 -->
+        <div class="top-bar">
+            <div class="logo-text">
+                <div class="logo-circle">C</div>
+                <span>华夏中投</span>
             </div>
-            <div class="tag">企业主体信用评级</div>
+            <span class="top-tag">企业主体信用评级</span>
         </div>
 
-        <!-- 颁发机构 -->
-        <div class="issuer-info">
-            华夏中投（北京）国际信用评估有限公司
-        </div>
+        <!-- 上方机构名称 -->
+        <div class="org-top-name">华夏中投（北京）国际信用评估有限公司</div>
 
         <!-- 证书标题 -->
-        <div class="cert-title">
-            诚信经理人认证证书
-        </div>
+        <div class="cert-title">诚信经理人认证证书</div>
 
-        <!-- 预览链接 -->
-        <div class="preview-link">
-            [预览证书]
-        </div>
+        <div class="preview">[预览证书]</div>
 
         <!-- 证书编号 -->
-        <div class="cert-number">
-            编号：WCXT112972860532 华夏中投评字[2025]
+        <div class="no-line">编号：WCXT112972860532 华夏中投评字[2025]</div>
+
+        <!-- 证书正文内容 -->
+        <div class="content">
+            经审定
+            <div class="name">李殿霞</div>
+            李殿霞诚信经理人认证证书，有效期自二零二五年四月八日起至二零二八年四月七日止
+            <br>特此公告
         </div>
 
-        <!-- 证书正文 -->
-        <div class="cert-content">
-            经审定<br><br>
-            <span style="font-size:20px; font-weight:bold;">李殿霞</span><br><br>
-            李殿霞诚信经理人认证证书，有效期自二零二五年四月八日起至二零二八年四月七日止<br><br>
-            特此公告
-        </div>
-
-        <!-- 二维码与颁发信息 -->
-        <div class="qrcode-section">
-            <div class="qrcode">
-                <!-- 你可以替换这里的SVG为真实二维码图片 -->
-                <svg width="120" height="120" viewBox="0 0 120 120">
-                    <rect width="120" height="120" fill="#000"/>
-                    <rect x="10" y="10" width="30" height="30" fill="#fff"/>
-                    <rect x="80" y="10" width="30" height="30" fill="#fff"/>
-                    <rect x="10" y="80" width="30" height="30" fill="#fff"/>
-                </svg>
-            </div>
-            <div class="issuer-details">
+        <!-- 空白二维码框，无图片 -->
+        <div class="bottom-area">
+            <div class="qr-code"></div>
+            <div class="sign-info">
                 华夏中投（北京）国际信用评估有限公司<br>
                 二零二五年四月八日
             </div>
         </div>
 
-        <!-- 其他证书链接 -->
-        <div class="other-certs">
-            该单位还有11个相关证书
-        </div>
+        <!-- 底部提示文字 -->
+        <div class="bottom-tip">该单位还有11个相关证书</div>
     </div>
 </body>
 </html>
