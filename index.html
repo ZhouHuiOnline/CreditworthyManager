@@ -1,205 +1,170 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <script type="text/javascript">var rootPath = "http://new.anzhuo.net";</script>
-    <style type="text/css">
-        .connon {
-            width: 600px;
-            margin: 50px auto;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>诚信经理人认证证书详情</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", SimSun, sans-serif;
         }
-
-        .ym {
-            height: 40px;
-            line-height: 40px;
-            border-bottom: 1px solid #cccccc;
+        body {
+            background: #ffffff;
+            padding: 40px 30px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-
-        .ymlt {
-            float: left;
-        }
-
-        .ymrt {
-            float: right;
-            font-size: 13px;
-        }
-
-        .ymzt h2 {
-            height: 50px;
-            line-height: 50px;
-            font-weight: 100;
-            margin-top: 35px;
-            font-size: 22px;
-            text-align: center;
-        }
-
-        .ymzt h3 {
-            height: 50px;
-            line-height: 40px;
-            text-align: center;
-            font-size: 30px;
-            font-weight: 100;
-            margin-bottom: 0;
-        }
-
-        .bh {
-            width: 540px;
-            font-size: 15px;
-            text-align: center;
-            height: 30px;
-            line-height: 30px;
-            border-bottom: 1px solid #aaaaaa;
-            margin: auto;
-        }
-
-        .ymcon {
-            width: 600px;
-            margin: auto;
-        }
-
-        .ymcon p {
-            font-size: 28px;
-            margin-top: 20px;
-            text-indent: 2em;
-        }
-
-        .yj {
-            height: 60px;
-            clear: both;
-            line-height: 60px;
-            border-bottom: 1px solid #cccccc;
-        }
-
-        p {
-            font-family: "微软雅黑";
-        }
-
-        h3 {
-            font-family: "微软雅黑";
-        }
-
-        h2 {
-            font-family: "微软雅黑";
-        }
-    </style>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-
-
-    <title>华夏中投（北京）国际信用评估有限公司</title>
-    <script src="static/js/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="static/js/qrcode.min.js" type="text/javascript"></script>
-    <link href="http://www.anzhuo.net/creditInfo/css.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="connon">
-    <div class="ym">
-        <div class="ymlt"><img width="100" src="static/image/lyys_logo.png"></div>
-        <div class="ymrt">企业主体信用评级</div>
-    </div>
-    <div class="ymzt">
-        <h2 id="guishu_str">华夏中投（北京）国际信用评估有限公司</h2>
-
-
-        <h3 style="letter-spacing: 4px;" id="type_str">信 用 等 级 公 告 书</h3>
-
-
-        <p style="text-align:center; font-size:20px; color:#428dd4; margin-top:0;" id="gaishuye_pic"><a id="tiaozhuan" style="text-decoration: none;color:#428dd4;" href="javascript:void(0)" >[预览证书]</a></p>
-
-
-        <div class="bh">编号：<font id="no"></font> 华夏中投评字[<font id="year_Str">2023</font>]</div>
-        <div class="ymcon">
-            <p style="text-indent:2em; margin-top:50px;">经审定</p>
-            <p style="text-align:center;"><font id="title"></font></p>
-            <p>
-
-
-                <font id="type_str1"></font>
-
-                <font id="level"></font></p>
-            <p style="text-indent:2em;">特此公告</p>
-        </div>
-        <div style="
+        .header-top {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;"
-        >
-            <div class="ont" id="qrcode" style="display: block; height:128px; width:128px;float: left"></div>
-            <div class="yt" style="float:right; width:400px;  text-align:center; font-size:20px;">
-                <p id="luokuan">华夏中投（北京）国际信用评估有限公司</p>
-                <p><font id="time_str"></font></p>
-            </div>
-        </div>
-        <div style="display: flex;justify-content: center;margin-top: 30px"><a id="qitaxiangguan" target="_blank" style="text-decoration: none;color:#428dd4;" href="" ></a></div>
-    </div>
-    <div class="yj" style="height: 30px"></div>
-</div>
-<script type="text/javascript">
-    $(function () {
-
-        new QRCode('qrcode', {
-            text: window.location.href,
-            width: 128,
-            height: 128,
-            correctLevel : 3,
-        })
-
-        var Request = new Object();
-        Request = GetRequest();
-        var id;
-        id = Request['id'];
-        $.ajax({
-            "type": "post",
-            "url": rootPath + "/api/Hxhome/detail",
-            "dataType": "json",
-            "data": {"id": id},
-            success: function (data) {
-                $("#no").html(data.on_number);
-                $("#title").html(data.name);
-
-                $("#qitaxiangguan").html('该单位还有'+data.total+'个相关证书');
-                $("#qitaxiangguan").attr('href','/newsPage-33.html?name='+data.name);
-                $("#level").html(data.level);
-                $("#luokuan").html(data.luokuan);
-                $("#time_str").html(data.start);
-                $("#year_Str").html(data.year_Str);
-                // if (data.type_str == '资信'){
-                //     $("#type_str").html('资 信 等 级 公 告 书');
-                //     $("#type_str1").html('资信等级');
-                // }else{
-                //     $("#type_str").html('信 用 等 级 公 告 书');
-                //     $("#type_str1").html('信用等级');
-                // }
-                $("#type_str").html(data.product_name);
-
-                if (data.guishu == '华夏中投'){
-                    $("#guishu_str").html('华夏中投（北京）国际信用评估有限公司');
-                }else{
-                    $("#guishu_str").html('华夏中投（北京）国际信用评估有限公司');
-                }
-
-                $('#tiaozhuan').attr('href','/dianzi.html?id='+data.id);
-                $('#tiaozhuan').attr('target','_blank');
-
-
-
-            }
-        })
-    })
-
-    function GetRequest() {
-        var url = location.search; //获取url中"?"符后的字串
-        var theRequest = new Object();
-        if (url.indexOf("?") != -1) {
-            var str = url.substr(1);
-            strs = str.split("&");
-            for(var i = 0; i < strs.length; i ++) {
-                theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
-            }
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
         }
-        return theRequest;
-    }
-</script>
+        .logo-text {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: bold;
+        }
+        .logo-circle {
+            width: 24px;
+            height: 24px;
+            background: #c8102e;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+        }
+        .header-right {
+            font-size: 14px;
+            color: #333;
+        }
+        .line-divider {
+            height: 1px;
+            background: #ddd;
+            margin: 25px 0;
+        }
+        .company-title {
+            text-align: center;
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .cert-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: normal;
+            margin-bottom: 12px;
+        }
+        .preview-link {
+            text-align: center;
+            color: #4080dd;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .num-line {
+            width: 70%;
+            margin: 0 auto 30px;
+            text-align: center;
+            font-size: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #999;
+        }
+        .text-block {
+            font-size: 24px;
+            margin: 35px 0;
+        }
+        .txt-left {
+            margin-bottom: 25px;
+        }
+        .name-center {
+            text-align: center;
+            font-size: 30px;
+            margin: 30px 0;
+        }
+        .content-txt {
+            width: 80%;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        .sign-wrap {
+            display: flex;
+            align-items: flex-end;
+            gap: 50px;
+            margin-top: 50px;
+            padding-left: 80px;
+        }
+        .qrcode-box {
+            width: 140px;
+            height: 140px;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sign-text {
+            font-size: 20px;
+            line-height: 2;
+            text-align: center;
+            flex: 1;
+        }
+        .bottom-tip {
+            text-align: center;
+            margin-top: 40px;
+            color: #4080dd;
+            font-size: 16px;
+        }
+        .bottom-line {
+            margin-top: 20px;
+            height: 1px;
+            background: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-top">
+        <div class="logo-text">
+            <span class="logo-circle">华</span>
+            <span>华夏中投</span>
+        </div>
+        <div class="header-right">企业主体信用评级</div>
+    </div>
+
+    <div class="company-title">华夏中投（北京）国际信用评估有限公司</div>
+    <h1 class="cert-title">诚信经理人认证证书</h1>
+    <div class="preview-link">[预览证书]</div>
+
+    <div class="num-line">编号：WCXT112972860532 华夏中投评字[2025]</div>
+
+    <div class="text-block txt-left">经审定</div>
+
+    <div class="name-center">李殿霞</div>
+
+    <div class="text-block content-txt">
+        李殿霞诚信经理人认证证书，有效期自二零二五年四月八日起至二零二八年四月七日止
+    </div>
+
+    <div class="text-block txt-left">特此公告</div>
+
+    <div class="sign-wrap">
+        <div class="qrcode-box">
+            <!-- 这里可以替换成真实二维码图片 <img src="qrcode.png" width="136" height="136"> -->
+            二维码区域
+        </div>
+        <div class="sign-text">
+            <p>华夏中投（北京）国际信用评估有限公司</p>
+            <p>二零二五年四月八日</p>
+        </div>
+    </div>
+
+    <div class="bottom-tip">该单位还有11个相关证书</div>
+    <div class="bottom-line"></div>
 </body>
-</html>
 </html>
